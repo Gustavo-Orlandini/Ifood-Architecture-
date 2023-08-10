@@ -17,5 +17,6 @@ def criar_produto(produto: Produto, db: Session = Depends(get_db)):
     return produto_criado
 
 @app.get('/produtos')
-def listar_produtos():
-    return {'Mensagem': 'Lsiatgem de produtos'}
+def listar_produtos(db: Session = Depends(get_db)):
+    produtos = RepositorioProduto(db).listar()
+    return produtos
