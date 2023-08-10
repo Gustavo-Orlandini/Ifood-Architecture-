@@ -1,5 +1,8 @@
+import sys
+sys.path.append('.')
+
 from sqlalchemy.orm import Session
-from src.schemas import schemas
+from src.schemas.schemas import Produto
 from src.infra.sqlalchemy.models import models
 
 class RepositorioProduto():
@@ -7,7 +10,7 @@ class RepositorioProduto():
     def __init__(self, db: Session):
         self.db = db
     
-    def criar(self, produto: schemas.Produto):
+    def criar(self, produto: Produto):
         db_produto = models.Produto(
             nome=produto.nome, 
             detalhes=produto.detalhes,

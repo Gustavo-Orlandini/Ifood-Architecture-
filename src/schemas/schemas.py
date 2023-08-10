@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -6,9 +6,6 @@ class Usuario(BaseModel):
     id: Optional[str] = None
     nome: str
     telefone: str
-    meus_produtos: List[Produto]
-    minhas_vendas: List[Pedido]
-    meus_pedidos: List[Pedido]
 
 class Produto(BaseModel):
     id: Optional[str] = None
@@ -17,7 +14,7 @@ class Produto(BaseModel):
     preco: float
     disponivel: bool = False
 
-    class Config:
+class Config:
         orm_mode = True
 
 class Pedido(BaseModel):
