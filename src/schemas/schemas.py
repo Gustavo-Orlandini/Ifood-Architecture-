@@ -10,12 +10,12 @@ class Usuario(BaseModel):
 class Produto(BaseModel):
     id: Optional[str] = None
     nome: str
-    detalhes: str
+    detalhes: Optional[str]
     preco: float
     disponivel: bool = False
 
-class Config:
-        orm_mode = True
+    class Config:
+        from_attributes = True
 
 class Pedido(BaseModel):
     id: Optional[str] = None
